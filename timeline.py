@@ -3,7 +3,6 @@
 import os.path
 from urllib.request import urlopen, urlretrieve, urlparse
 import json
-from pprint import pprint
 
 
 def gen_url(story_id):
@@ -50,4 +49,3 @@ if __name__ == '__main__':
     evs = get_events(data, os.path.join(args.base_dir, 'res'))
     with open(os.path.join(args.base_dir, 'story.json'), 'w') as buf:
         json.dump(evs, buf)
-    pprint(evs)
