@@ -36,10 +36,13 @@
 
     {% for ev in events %}
     <section class="slide">
-        <img style="float: left" src="{{ev['img_cache']}}">
         <h2>{{ ev['title'] }}</h2>
         <h3>{{ ev['utc_ts'] | strftime }}</h3>
-        <div>{{ ev['description'] }}     
+        <div>
+            {% if 'img_cache' in ev %}
+            <img style="float: left" src="{{ev['img_cache']}}">
+            {% endif %}
+            {{ ev['description'] }}     
         </div>
     </section>
     {% endfor %}
@@ -89,9 +92,12 @@ var deck;
 $(function() {
     var d = $.deck('.slide');
     setInterval(function() {
-        console.log('next');
-        console.log($.deck('getSlide').prop('id'));
+        now_id = $.deck('getSlide').prop('id');
         $.deck('next');
+        then_id = $.deck('getSlide').prop('id');
+        if(now_id == then_id) {
+            $.deck('go', 0);
+        }
     }, {{timeout}});
 });
 </script>

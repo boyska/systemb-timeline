@@ -1,2 +1,17 @@
+About
+=====
+
 Fetch a dipity.com story metadata!
+
+HowTo
+======
+
+```sh
+virtualenv -p /usr/bin/python3 ve
+./ve/bin/pip install -r requirements.txt
+mkdir slides
+./ve/bin/python timeline.py user/storyname --base-dir slides
+curl -s 'https://github.com/imakewebthings/deck.js/archive/latest.tar.gz -L' | tar xz --strip-components 1 -C slides
+./ve/bin/python render.py slides/story.json --out slides/slide.html
+```
 

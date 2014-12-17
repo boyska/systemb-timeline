@@ -36,7 +36,7 @@ if __name__ == '__main__':
     args = get_parser().parse_args()
     d = read_data(args.story[0])
     tmpl = jinja_env.get_template(default_tmpl)
-    out = tmpl.render(events=d, timeout=2000)
+    out = tmpl.render(events=d, timeout=5000)
     if args.out == '-':
         print(out)
     else:
