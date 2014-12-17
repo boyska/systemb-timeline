@@ -1,0 +1,2 @@
+Fetch a dipity.com story metadata!
+
