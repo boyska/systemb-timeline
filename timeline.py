@@ -28,7 +28,8 @@ def get_events(data, res_dir='.'):
                 os.mkdir(res_dir)
             if not os.path.exists(fname):
                 urlretrieve(url, fname)
-            ev['img_cache'] = fname
+            ev['img_cache'] = os.path.join(os.path.basename(res_dir),
+                                           os.path.basename(o.path))
         return ev
     evs = list(map(update_img, evs))
     return evs
